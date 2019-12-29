@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import artistDAta from './mock_data/artistdata';
+import { ArtistItemComponent } from './artist-item/artist-item';
 
 export class Artist {
   name: string;
@@ -14,14 +15,18 @@ export class Artist {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'skiDayAppTest';
-  name: string;
+  title = 'skiDayAshowArtistppTest';
+  query: string;
   artists: Artist[];
   currentArtist: Artist;
 
   constructor() {
-    this.name = 'Hassum Harold';
+    this.query = '';
     this.artists = artistDAta;
+  }
+
+  showArtist(item) {
+    this.currentArtist = item;
   }
 
   addArtist(artist) {
@@ -34,7 +39,7 @@ export class AppComponent {
   }
 
   onClick(artist, artistContainer: HTMLLIElement) {
-    this.name = artist.name;
+    this.query = artist.name;
     artistContainer.style.backgroundColor = '#FECE4E';
   }
 }
